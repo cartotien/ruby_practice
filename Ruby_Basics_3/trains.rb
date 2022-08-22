@@ -31,6 +31,10 @@ class Train
 
   def route=(route)
     @route = route if route.is_a? Route
+    if @route.route_map[0]
+      @route.route_map[0].park_train(self)
+    else
+      puts "No stations at #{route}" 
   end
 
   def current_station
