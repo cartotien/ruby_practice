@@ -98,6 +98,6 @@ class RailwayStation
   end
 
   def show_train_types
-    @trains_list.map(&:type).tally
+    puts @trains_list.map(&:type).tally
   end
 end
