@@ -30,7 +30,7 @@ class Train
   end
 
   def route=(route)
-    @route = route if route.is_a?(Route) && route.route_map[0].is_a?(RailwayStation)
+    @route = route if route.is_a?(Route) && !route.route_map.empty?
     @route.route_map[0].park_train(self)
   end
 
