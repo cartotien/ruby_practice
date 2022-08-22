@@ -60,7 +60,7 @@ class Route
   end
 
   def show_stations
-    @route_map.map(&:name)
+    puts @route_map.map(&:name)
   end
 
   def add_station(station)
