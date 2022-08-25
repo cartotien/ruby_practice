@@ -55,5 +55,5 @@ class Train
   end
 
   # Инкапсулировал, потому что предполагаются методы для работы с данными аттрибутами
-  private :speed=, :carriage= 
+  protected :speed=, :carriage= 
 end

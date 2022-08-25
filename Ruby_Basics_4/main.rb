@@ -29,7 +29,7 @@ class Main
     end
   end
 
-  private 
+  protected 
 
   def user_action
     action = gets.to_i
