@@ -55,11 +55,11 @@ class Main
   end
 
   def show_routes
-    @routes.each_with_index { |route, i| puts "Route: #{i} - Stations: #{route.show_stations}" }
+    @routes.each_with_index { |route, index| puts "Route: #{index} - Stations: #{route.show_stations}" }
   end
 
   def show_stations
-    @stations.each_with_index { |station, i| puts "Station: #{station.name} - i: #{i}" }
+    @stations.each_with_index { |station, index| puts "Station: #{station.name} - i: #{index}" }
   end
 
   def train_selector
