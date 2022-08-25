@@ -88,7 +88,7 @@ class Main
   end
 
   def create_and_manage_routes
-    puts '      1 - Manage routes (Add/Delete stations)'
+    puts "\n      1 - Manage routes (Add/Delete stations)"
     puts '      2 - Create new route'
     case gets.to_i
     when 1
