@@ -6,7 +6,7 @@ class Route
   end
 
   def show_stations
-    p @route_map.each(&:name)
+    @route_map.map(&:name)
   end
 
   def add_station(station)

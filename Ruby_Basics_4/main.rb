@@ -55,6 +55,20 @@ class Main
     end
   end
 
+  def show_routes
+    @routes.each_with_index { |route, i| puts "Route: #{i} - i: #{route.show_stations}" }
+  end
+
+  def show_stations
+    @stations.each_with_index { |station, i| puts "Station: #{station.name} - i: #{i}" }
+  end
+
+  def train_selector
+    puts "Choose train by index: "
+    @trains.each_with_index { |train, index| puts "Type: #{train.type} - i: #{index}" }
+    @trains[gets.to_i]
+  end
+  
   def create_station
     puts "Enter station's name: "
     @stations << RailwayStation.new(name=gets.chomp)
@@ -77,8 +91,8 @@ class Main
   end
 
   def create_and_manage_routes
-    puts "      1 - Manage routes (Add/Delete stations)
-      2 - Create new route\n"
+    puts "      1 - Manage routes (Add/Delete stations)"
+    puts "      2 - Create new route"
     action = gets.to_i
 
     case action
@@ -91,20 +105,13 @@ class Main
     end
   end    
 
-  def show_routes
-    @routes.each_with_index { |route, i| puts "Route #{i} - #{route.show_stations}" }
-  end
-
-  def show_stations
-    @stations.each_with_index { |station, i| p [station.name, i] }
-  end
-
   def manage_routes
     puts "Choose route by index: "
     self.show_routes
-    route = @routes[gets.to_i]
+    route = @routes[gets.to_i] 
     
-    puts "      1 - Add stations\n2 - Delete stations"
+    puts "\n      1 - Add stations"
+    puts "      2 - Delete stations"
     action = gets.to_i
     case action
     when 1
@@ -114,7 +121,7 @@ class Main
       puts "Station was successfully added"
     when 2
       puts "Choose station by index: "
-      route.show_stations
+      p route.show_stations
       route.delete_station(gets.to_i)
       puts "Station was deleted"
     else
@@ -122,15 +129,10 @@ class Main
     end
   end
 
-  def train_selector
-    puts "Choose train by index: "
-    @trains.map.with_index { |train, index| p [train.type, index] }
-    @trains[gets.to_i]
-  end
-
   def set_route
     train = self.train_selector
-    puts "Choose route by index: #{self.show_routes}"
+    puts "Choose route by index: "
+    self.show_routes
     train.route = @routes[gets.to_i]
     puts "Route was set successfully"
   end
@@ -156,8 +158,8 @@ class Main
 
   def send_trains
     train = self.train_selector
-    puts "      1 - Move to next staiton\n
-       2 - Move to previous station"
+    puts "\n      1 - Move to next staiton"
+    puts "      2 - Move to previous station"
     action = gets.to_i
 
     case action
