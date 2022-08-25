@@ -157,7 +157,7 @@ class Main
   def send_trains
     train = self.train_selector
     puts "      1 - Move to next staiton\n
-      2 - Move to previous station"
+       2 - Move to previous station"
     action = gets.to_i
 
     case action
