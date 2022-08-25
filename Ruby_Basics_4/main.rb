@@ -158,8 +158,8 @@ class Main
     train = self.train_selector
     puts "      1 - Move to next staiton\n
       2 - Move to previous station"
-    
     action = gets.to_i
+
     case action
     when 1
       train.move_to_next_station
