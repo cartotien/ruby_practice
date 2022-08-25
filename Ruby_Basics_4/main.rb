@@ -67,7 +67,7 @@ class Main
     @trains.each_with_index { |train, index| puts "Type: #{train.type} - i: #{index}" }
     @trains[gets.to_i]
   end
- 
+
   def create_station
     puts "Enter station's name: "
     @stations << RailwayStation.new(gets.chomp)
