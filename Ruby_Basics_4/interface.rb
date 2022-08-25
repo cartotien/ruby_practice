@@ -1,9 +1,11 @@
+require_relative 'train'
 require_relative 'cargo_train'
-require_relative 'carriage'
 require_relative 'passenger_train'
+require_relative 'carriage'
+require_relative 'passenger_cariage'
+require_relative 'cargo_carriage'
 require_relative 'railway_station'
 require_relative 'route'
-require_relative 'train'
 
 class Interface
   def initialize
