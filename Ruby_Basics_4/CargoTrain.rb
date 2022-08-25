@@ -1,8 +1,8 @@
-require_relative 'Train.rb'
+require_relative 'Train'
 
 class CargoTrain < Train
   def initialize
-    super(type='cargo')
+    super('cargo')
   end
 
   def attach_carriage(carriage)

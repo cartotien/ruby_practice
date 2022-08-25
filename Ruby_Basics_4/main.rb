@@ -1,16 +1,16 @@
-require_relative 'CargoTrain.rb'
-require_relative 'Carriage.rb'
-require_relative 'PassengerTrain.rb'
-require_relative 'RailwayStation.rb'
-require_relative 'Route.rb'
-require_relative 'Train.rb'
+require_relative 'CargoTrain'
+require_relative 'Carriage'
+require_relative 'PassengerTrain'
+require_relative 'RailwayStation'
+require_relative 'Route'
+require_relative 'Train'
 
 class Main
   def initialize
     @trains = []
     @stations = []
     @routes = []
-    puts "\nWelcome to Rails app." 
+    puts "\nWelcome to Rails app."
   end
 
   def start
@@ -25,32 +25,32 @@ class Main
       7 - Send trains on route
       8 - List all stations and trains
       9 - Exit app"
-      break if self.user_action == '9'
+      break if user_action == '9'
     end
   end
 
-  protected 
+  protected
 
   def user_action
     case gets.to_i
     when 1
-      self.create_station
+      create_station
     when 2
-      self.create_train
+      create_train
     when 3
-      self.create_and_manage_routes
+      create_and_manage_routes
     when 4
-      self.set_route
-    when 5 
-      self.attach_carriages
+      set_route
+    when 5
+      attach_carriages
     when 6
-      self.detach_carriages
+      detach_carriages
     when 7
-      self.send_trains
+      send_trains
     when 8
-      self.list_stations_and_trains
+      list_stations_and_trains
     when 9
-      return '9'
+      '9'
     end
   end
 
@@ -63,19 +63,18 @@ class Main
   end
 
   def train_selector
-    puts "Choose train by index: "
+    puts 'Choose train by index: '
     @trains.each_with_index { |train, index| puts "Type: #{train.type} - i: #{index}" }
     @trains[gets.to_i]
   end
-  
+ 
   def create_station
     puts "Enter station's name: "
-    @stations << RailwayStation.new(name=gets.chomp)
+    @stations << RailwayStation.new(gets.chomp)
   end
 
   def create_train
-    puts "Specify train type (cargo/passenger): "
-    
+    puts 'Specify train type (cargo/passenger): '
     case gets.chomp.downcase
     when 'cargo'
       @trains << CargoTrain.new
@@ -89,73 +88,70 @@ class Main
   end
 
   def create_and_manage_routes
-    puts "      1 - Manage routes (Add/Delete stations)"
-    puts "      2 - Create new route"
-
+    puts '      1 - Manage routes (Add/Delete stations)'
+    puts '      2 - Create new route'
     case gets.to_i
     when 1
-      self.manage_routes
+      manage_routes
     when 2
       @routes << Route.new
     else
-      puts "No such option"
+      puts 'No such option'
     end
-  end    
+  end
 
   def manage_routes
-    puts "Choose route by index: "
-    self.show_routes
-    route = @routes[gets.to_i] 
+    puts 'Choose route by index: '
+    show_routes
+    route = @routes[gets.to_i]
     puts "\n      1 - Add stations"
-    puts "      2 - Delete stations"
-
+    puts '      2 - Delete stations'
     case gets.to_i
     when 1
-      puts "Choose station by index: "
-      self.show_stations
+      puts 'Choose station by index: '
+      show_stations
       route.add_station(@stations[gets.to_i])
-      puts "Station was successfully added"
+      puts 'Station was successfully added'
     when 2
-      puts "Choose station by index: "
+      puts 'Choose station by index: '
       p route.show_stations
       route.delete_station(gets.to_i)
-      puts "Station was deleted"
+      puts 'Station was deleted'
     else
-      puts "No such option"
+      puts 'No such option'
     end
   end
 
   def set_route
-    train = self.train_selector
-    puts "Choose route by index: "
-    self.show_routes
+    train = train_selector
+    puts 'Choose route by index: '
+    show_routes
     train.route = @routes[gets.to_i]
-    puts "Route was set successfully"
+    puts 'Route was set successfully'
   end
 
   def attach_carriages
-    train = self.train_selector
+    train = train_selector
     if train.type == 'cargo'
       train.attach_carriage CargoCarriage.new
-      puts "Carriage was added successfully"
     else
       train.attach_carriage PassengerCarriage.new
-      puts "Carriage was added successfully"
     end
+    puts 'Carriage was added successfully'
   end
 
   def detach_carriages
-    train = self.train_selector
-    puts "Choose carriage by index: "
-    train.carriage.each_with_index { |carriage, index| p index }
+    train = train_selector
+    puts 'Choose carriage by index: '
+    train.carriage.each_with_index { |_carriage, index| p index }
     train.detach_carriage(gets.to_i)
-    puts "Carriage was detached successfully"
+    puts 'Carriage was detached successfully'
   end
 
   def send_trains
-    train = self.train_selector
+    train = train_selector
     puts "\n      1 - Move to next staiton"
-    puts "      2 - Move to previous station"
+    puts '      2 - Move to previous station'
 
     case gets.to_i
     when 1
