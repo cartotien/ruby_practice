@@ -152,7 +152,6 @@ class Main
     train = train_selector
     puts "\n      1 - Move to next staiton"
     puts '      2 - Move to previous station'
-
     case gets.to_i
     when 1
       train.move_to_next_station
