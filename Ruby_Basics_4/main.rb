@@ -32,8 +32,7 @@ class Main
   protected 
 
   def user_action
-    action = gets.to_i
-    case action
+    case gets.to_i
     when 1
       self.create_station
     when 2
@@ -56,7 +55,7 @@ class Main
   end
 
   def show_routes
-    @routes.each_with_index { |route, i| puts "Route: #{i} - i: #{route.show_stations}" }
+    @routes.each_with_index { |route, i| puts "Route: #{i} - Stations: #{route.show_stations}" }
   end
 
   def show_stations
@@ -76,9 +75,8 @@ class Main
 
   def create_train
     puts "Specify train type (cargo/passenger): "
-    type = gets.chomp.downcase
     
-    case type
+    case gets.chomp.downcase
     when 'cargo'
       @trains << CargoTrain.new
       puts "\nCargo train successfully created"
@@ -93,9 +91,8 @@ class Main
   def create_and_manage_routes
     puts "      1 - Manage routes (Add/Delete stations)"
     puts "      2 - Create new route"
-    action = gets.to_i
 
-    case action
+    case gets.to_i
     when 1
       self.manage_routes
     when 2
@@ -109,11 +106,10 @@ class Main
     puts "Choose route by index: "
     self.show_routes
     route = @routes[gets.to_i] 
-    
     puts "\n      1 - Add stations"
     puts "      2 - Delete stations"
-    action = gets.to_i
-    case action
+
+    case gets.to_i
     when 1
       puts "Choose station by index: "
       self.show_stations
@@ -160,9 +156,8 @@ class Main
     train = self.train_selector
     puts "\n      1 - Move to next staiton"
     puts "      2 - Move to previous station"
-    action = gets.to_i
 
-    case action
+    case gets.to_i
     when 1
       train.move_to_next_station
     when 2
