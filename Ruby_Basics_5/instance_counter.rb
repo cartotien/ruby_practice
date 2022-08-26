@@ -5,10 +5,10 @@ module InstanceCounter
   end
 
   module ClassMethods
-    attr_accessor :instances
+    attr_writer :instances
 
-    def initialize_counter
-      self.instances = 0
+    def instances
+      @instances || 0
     end
   end
 

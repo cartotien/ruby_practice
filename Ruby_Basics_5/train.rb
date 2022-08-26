@@ -5,13 +5,13 @@ class Train
   prepend Vendor
   include InstanceCounter
 
-  @@trains = []
+  instances
+
+  @@all = []
 
   def self.find(id)
-    @@trains.find { |train| train if train.id == id }
+    @@all.find { |train| train.id == id }
   end
-
-  initialize_counter
 
   attr_accessor :speed, :carriage
   attr_writer :current_station
@@ -22,7 +22,7 @@ class Train
     @speed = speed
     @carriage = []
     @id = id
-    @@trains << self
+    @@all << self
     register_instance
   end
 
