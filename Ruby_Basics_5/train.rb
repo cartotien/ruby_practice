@@ -5,8 +5,6 @@ class Train
   prepend Vendor
   include InstanceCounter
 
-  instances
-
   @@all = []
 
   def self.find(id)

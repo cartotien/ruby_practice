@@ -3,8 +3,6 @@ require_relative 'instance_counter'
 class Route
   include InstanceCounter
 
-  instances
-
   attr_reader :route_map
 
   def initialize

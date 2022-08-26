@@ -3,8 +3,6 @@ require_relative 'instance_counter'
 class RailwayStation
   include InstanceCounter
 
-  instances
-
   @@all = []
 
   def self.all
