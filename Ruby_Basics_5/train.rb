@@ -8,7 +8,7 @@ class Train
   attr_accessor :speed, :carriage
   attr_writer :current_station
   attr_reader :type, :route, :id
-  
+
   initialize_counter
   @@trains = []
 
@@ -70,5 +70,5 @@ class Train
     @route.previous_station(@current_station).park_train(self)
   end
 
-  protected :speed=, :carriage= 
+  protected :speed=, :carriage=
 end
