@@ -5,13 +5,13 @@ class RailwayStation
 
   @@stations = []
 
-  initialize_counter
-
-  attr_reader :name, :trains_list
-
   def self.all
     @@stations
   end
+
+  initialize_counter
+
+  attr_reader :name, :trains_list
 
   def initialize(name)
     @name = name.to_s.capitalize

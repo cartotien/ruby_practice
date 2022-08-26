@@ -7,11 +7,11 @@ class Train
 
   @@trains = []
 
-  initialize_counter
-
   def self.find(id)
     @@trains.find { |train| train if train.id == id }
   end
+
+  initialize_counter
 
   attr_accessor :speed, :carriage
   attr_writer :current_station
