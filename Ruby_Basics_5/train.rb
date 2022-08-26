@@ -5,16 +5,17 @@ class Train
   prepend Vendor
   include InstanceCounter
 
-  attr_accessor :speed, :carriage
-  attr_writer :current_station
-  attr_reader :type, :route, :id
+  @@trains = []
 
   initialize_counter
-  @@trains = []
 
   def self.find(id)
     @@trains.find { |train| train if train.id == id }
   end
+
+  attr_accessor :speed, :carriage
+  attr_writer :current_station
+  attr_reader :type, :route, :id
 
   def initialize(type, id, speed = 0)
     @type = type.downcase
