@@ -22,7 +22,6 @@ class Train
     @speed = speed
     @carriage = []
     @id = id
-    validate!
     @@all << self
     register_instance
   end
@@ -70,13 +69,6 @@ class Train
 
   def move_to_previous_station
     @route.previous_station(@current_station).park_train(self)
-  end
-
-  def valid?
-    validate!
-    true
-  rescue RuntimeError
-    false
   end
 
   protected :speed=, :carriage=
