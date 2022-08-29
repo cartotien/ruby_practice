@@ -79,6 +79,7 @@ class Interface
     when 'passenger'
       @trains << PassengerTrain.new(details[0], details[1])
     end
+    puts "\n#{@trains.last} successfully created"
   end
 
   def create_station
@@ -91,10 +92,8 @@ class Interface
     case gets.chomp.downcase
     when 'cargo'
       train_creator('cargo')
-      puts "\n#{@trains.last} successfully created"
     when 'passenger'
       train_creator('passenger')
-      puts "\n#{@trains.last} successfully created"
     end
   end
 

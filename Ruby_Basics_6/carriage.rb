@@ -8,4 +8,7 @@ class Carriage
   def initialize(type)
     @type = type
   end
+
+  def validate!
+  end
 end
