@@ -18,7 +18,7 @@ class Interface
   def start
     loop do
       puts "\nChoose from a number of available options: \n
-      1 - Create stations
+      1 - Create staions
       2 - Create trains
       3 - Create and manage routes
       4 - Set route for chosen train
@@ -34,26 +34,27 @@ class Interface
   protected
 
   def user_action
+    validate_user_input {
     case gets.to_i
     when 1
-      validate_user_input { create_station }
+      create_station
     when 2
-      validate_user_input { create_train }
+      create_train
     when 3
-      validate_user_input { create_and_manage_routes }
+      create_and_manage_routes
     when 4
-      validate_user_input { set_route }
+      set_route
     when 5
-      validate_user_input { attach_carriages }
+      attach_carriages
     when 6
-      validate_user_input { detach_carriages }
+      detach_carriages
     when 7
-      validate_user_input { send_trains }
+      send_trains
     when 8
-      validate_user_input { list_stations_and_trains }
+      list_stations_and_trains
     when 9
       '9'
-    end
+    end }
   end
 
   def show_routes
@@ -98,7 +99,7 @@ class Interface
   end
 
   def create_and_manage_routes
-    puts "\n      1 - Manage routes (Add/Delete stations)"
+    puts "\n      1 - Manage rutes (Add/Delete stations)"
     puts '      2 - Create new route'
     case gets.to_i
     when 1
@@ -114,14 +115,14 @@ class Interface
     puts 'Choose route by index: '
     show_routes
     route = @routes[gets.to_i]
-    puts "\n      1 - Add stations"
+    puts "\n      1 - Add statons"
     puts '      2 - Delete stations'
     case gets.to_i
     when 1
       puts 'Choose station by index: '
       show_stations
       route.add_station(@stations[gets.to_i])
-      puts 'Station was successfully added'
+      puts 'Station wassuccessfully added'
     when 2
       puts 'Choose station by index: '
       p route.show_stations
@@ -158,11 +159,11 @@ class Interface
 
   def send_trains
     train = train_selector
-    puts "\n      1 - Move to next staiton"
+    puts "\n      1 - Move to ext staiton"
     puts '      2 - Move to previous station'
     case gets.to_i
     when 1
-      train.move_to_next_station
+      train.move_to_nex_station
     when 2
       train.move_to_previous_station
     end
