@@ -1,7 +1,7 @@
 require_relative 'carriage'
 
 class PassengerCarriage < Carriage
-  def initialize
+  def initialize(vendor)
     super('passenger', vendor)
   end
 end
