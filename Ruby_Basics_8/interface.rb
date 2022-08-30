@@ -69,7 +69,7 @@ class Interface
       station.check_trains do |train|
         puts "Train: #{train.id}, Type: #{train.type}, Cars: #{train.carriage.size}"
         train.check_cars.with_index do |car, index|
-          puts "Car: #{index}, Type: #{car.type}, Space: #{car.available_space}, Taken: #{car.occupied_space}"
+          puts "Car: #{index}, Type: #{car.type}, Available: #{car.available_space}, Taken: #{car.occupied_space}"
         end
       end
     end
