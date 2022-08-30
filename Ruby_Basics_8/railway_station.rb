@@ -7,10 +7,10 @@ class RailwayStation
 
   NAME_FORMAT = /[a-zа-я]{5,15}-?[0-9]?/i.freeze
 
-  @@all = []
+  attr_writer :all
 
   def self.all
-    @@all
+    @all ||= []
   end
 
   attr_reader :name, :trains_list
@@ -19,7 +19,7 @@ class RailwayStation
     @name = name.to_s.capitalize
     @trains_list = []
     validate!
-    @@all << self
+    self.class.all << self
     register_instance
   end
 

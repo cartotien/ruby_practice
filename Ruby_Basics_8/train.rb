@@ -9,14 +9,16 @@ class Train
 
   ID_FORMAT = /[0-9a-zа-я]{3}-?[a-zа-я0-9]{2}/i.freeze
 
-  @@all = []
+  def self.all
+    @all ||= []
+  end
 
   def self.find(id)
-    @@all.find { |train| train.id == id }
+    @all.find { |train| train.id == id }
   end
 
   attr_accessor :speed, :carriage
-  attr_writer :current_station
+  attr_writer :current_station, :all
   attr_reader :type, :route, :id
 
   def initialize(type, id, speed = 0)
@@ -24,7 +26,7 @@ class Train
     @speed = speed
     @carriage = []
     @id = id
-    @@all << self
+    self.class.all << self
     register_instance
   end
 
