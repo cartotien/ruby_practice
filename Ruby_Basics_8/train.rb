@@ -64,19 +64,19 @@ class Train
   end
 
   def next_station
-    @route.next_station(@current_station).name
+    @route.next_station(@current_station)
   end
 
   def previous_station
-    @route.previous_station(@current_station).name
+    @route.previous_station(@current_station)
   end
 
   def move_to_next_station
-    @route.next_station(@current_station).park_train(self)
+    next_station.park_train(self)
   end
 
   def move_to_previous_station
-    @route.previous_station(@current_station).park_train(self)
+    previous_station.park_train(self)
   end
 
   protected :speed=, :carriage=
