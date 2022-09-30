@@ -8,7 +8,7 @@ module Accessors
       define_method(name) { instance_variable_get(var_name) }
       define_method("#{name}_history") { instance_variable_get(history_var_name) || [] }
       define_method("#{name}=") do |value|
-        instance_variable_set(history_var_name, send("#{name}_history") << value)
+        instance_variable_set(history_var_name, public_send("#{name}_history") << value)
         instance_variable_set(var_name, value)
       end
     end
